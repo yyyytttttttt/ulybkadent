@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from "react";
-import Layout from "../../layouts/Layout";
+import Layout from "../layouts/Layout";
 import Image from "next/image";
 import CertificateForm from "../components/certi/Form";
 
