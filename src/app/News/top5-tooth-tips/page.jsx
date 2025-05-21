@@ -2,10 +2,10 @@
 
 import React from "react";
 import Layout from "../../layouts/Layout";
-import FirstBlock from "../components/cleaning-care/FirstBlock";
-import FirstBlock1 from "../components/cleaning-care/FirstBlock1";
-import SecondBlock from "../components/cleaning-care/SecondBlock";
-import SecondBlock2 from "../components/cleaning-care/SecondBlock2";
+import FirstBlock from "../../components/cleaning-care/FirstBlock";
+import FirstBlock1 from "../../components/cleaning-care/FirstBlock1";
+import SecondBlock from "../../components/cleaning-care/SecondBlock";
+import SecondBlock2 from "../../components/cleaning-care/SecondBlock2";
 import Head from "next/head";
 export async function generateMetadata() {
   return {

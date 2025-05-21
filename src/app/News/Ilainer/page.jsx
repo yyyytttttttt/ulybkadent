@@ -1,8 +1,8 @@
 import Layout from "../../layouts/Layout"
 import Image from "next/image"
-import Block from "../components/Ilainer/Block"
-import Block2 from "../components/Ilainer/Block2"
-import Block3 from "../components/Ilainer/Block3"
+import Block from "../../components/Ilainer/Block"
+import Block2 from "../../components/Ilainer/Block2"
+import Block3 from "../../components/Ilainer/Block3"
 import Head from "next/head"
 export async function generateMetadata() {
     return {

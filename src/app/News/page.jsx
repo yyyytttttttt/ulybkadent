@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '../../layouts/Layout'
+import Layout from '../layouts/Layout'
 import Image from 'next/image'
 import Stat from '../components/News/Stat'
 import Head from 'next/head'

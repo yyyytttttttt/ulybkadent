@@ -1,7 +1,7 @@
 
 
 import React from "react";
-import Layout from "../../../layouts/Layout";
+import Layout from "../../layouts/Layout";
 import FirstBlock from "../../components/cleaning-care/FirstBlock";
 import SecondBlock from "../../components/cleaning-care/SecondBlock";
 import SecondBlock2 from "../../components/cleaning-care/SecondBlock2";
