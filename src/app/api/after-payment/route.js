@@ -4,7 +4,7 @@ import PDFDocument from 'pdfkit'
 import { Readable } from 'stream'
 
 async function generatePdf({name,amount}) {
-    const doc =PDFDocument()
+    const doc = new PDFDocument()
     const stream = new Readable({read(){} })
     doc.on('data', chunk => stream.push(chunk))
     doc.on('end',()=>stream.push(null))
