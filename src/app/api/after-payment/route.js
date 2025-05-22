@@ -8,8 +8,10 @@ async function generatePdf({name,amount}) {
     const stream = new Readable({read(){} })
     doc.on('data', chunk => stream.push(chunk))
     doc.on('end',()=>stream.push(null))
+    doc.font('Helvetica') 
     doc.fontSize(24).text('🎁 Подарочный сертификат', { align: 'center' })
     doc.moveDown()
+    
     doc.fontSize(18).text(`Имя: ${name}`)
     doc.text(`Сумма :${amount}₽`)
     doc.text(`Дата: ${new Date().toLocaleDateString()}`)
