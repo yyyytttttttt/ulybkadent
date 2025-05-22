@@ -2,13 +2,15 @@ import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import PDFDocument from 'pdfkit'
 import { Readable } from 'stream'
+import path from 'path'
 
 async function generatePdf({name,amount}) {
+    const fontPath = path.resolve(process.cwd(), 'public/fonts/Roboto-Regular.ttf')
     const doc = new PDFDocument()
     const stream = new Readable({read(){} })
     doc.on('data', chunk => stream.push(chunk))
     doc.on('end',()=>stream.push(null))
-    doc.font('Helvetica') 
+    doc.font(fontPath) 
     doc.fontSize(24).text('🎁 Подарочный сертификат', { align: 'center' })
     doc.moveDown()
     
