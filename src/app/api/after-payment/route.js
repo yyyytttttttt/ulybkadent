@@ -17,10 +17,10 @@ async function sendEmailWithCertificate({ email, name }) {
 
   const imageBuffer = fs.readFileSync(CERT_IMAGE_PATH)
 
-  const transporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransport({
     host: 'smtp.mail.ru',
-    port: 465,
-    secure: true,
+    port: 587,
+    secure: false,
     auth: {
       user: process.env.MAIL_USER,
       pass: process.env.MAIL_PASS
