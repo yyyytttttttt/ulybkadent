@@ -4,6 +4,7 @@ import PDFDocument from 'pdfkit'
 import { Readable } from 'stream'
 import path from 'path'
 
+// 🔧 Генератор PDF-сертификата
 async function generatePdf({ name, amount }) {
   const doc = new PDFDocument()
   const stream = new Readable({ read() {} })
@@ -11,12 +12,20 @@ async function generatePdf({ name, amount }) {
   doc.on('data', chunk => stream.push(chunk))
   doc.on('end', () => stream.push(null))
 
-  // ✅ Указываем абсолютный путь к TTF-файлу (НЕ через Buffer!)
-  const fontPath = path.resolve(process.cwd(), 'public/fonts/Roboto-Regular.ttf')
-  doc.registerFont('Roboto', fontPath)
+  // Регистрируем кастомный шрифт
+  doc.registerFont(
+    'Roboto',
+    path.resolve(process.cwd(), 'public/fonts/Roboto-Regular.ttf')
+  )
   doc.font('Roboto')
 
-  // 🖨 Отрисовка PDF
+  // Устанавливаем метаданные
+  doc.info = {
+    Title: 'Подарочный сертификат',
+    Author: 'Улыбка'
+  }
+
+  // 🖨 Рендерим контент PDF
   doc.fontSize(24).text('🎁 Подарочный сертификат', { align: 'center' })
   doc.moveDown()
   doc.fontSize(18).text(`Имя: ${name}`)
@@ -30,9 +39,9 @@ async function generatePdf({ name, amount }) {
   return Buffer.concat(chunks)
 }
 
+// 📧 Отправка письма с вложением
 async function sendEmailWithAttachment({ email, name, pdfBuffer }) {
   const transporter = nodemailer.createTransport({
-    service: 'Mail.ru',
     host: 'smtp.mail.ru',
     port: 465,
     secure: true,
@@ -57,10 +66,15 @@ async function sendEmailWithAttachment({ email, name, pdfBuffer }) {
   })
 }
 
+// 📬 Обработка POST-запроса
 export async function POST(req) {
   try {
     const body = await req.json()
-    const { name, email, amount } = body.object.metadata
+    const { name, email, amount } = body.object?.metadata || {}
+
+    if (!name || !email || !amount) {
+      return NextResponse.json({ error: 'Неверные данные' }, { status: 400 })
+    }
 
     const pdfBuffer = await generatePdf({ name, amount })
     await sendEmailWithAttachment({ email, name, pdfBuffer })
