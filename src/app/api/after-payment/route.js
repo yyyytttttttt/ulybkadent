@@ -3,7 +3,6 @@ import nodemailer from 'nodemailer'
 import PDFDocument from 'pdfkit'
 import { Readable } from 'stream'
 import path from 'path'
-import { promises as fs } from 'fs'
 
 async function generatePdf({ name, amount }) {
   const doc = new PDFDocument()
@@ -12,12 +11,12 @@ async function generatePdf({ name, amount }) {
   doc.on('data', chunk => stream.push(chunk))
   doc.on('end', () => stream.push(null))
 
-  // Абсолютный путь до TTF-шрифта
+  // ✅ Указываем абсолютный путь к TTF-файлу (НЕ через Buffer!)
   const fontPath = path.resolve(process.cwd(), 'public/fonts/Roboto-Regular.ttf')
-  const fontBuffer = await fs.readFile(fontPath)
-  doc.registerFont('Roboto', fontBuffer)
-
+  doc.registerFont('Roboto', fontPath)
   doc.font('Roboto')
+
+  // 🖨 Отрисовка PDF
   doc.fontSize(24).text('🎁 Подарочный сертификат', { align: 'center' })
   doc.moveDown()
   doc.fontSize(18).text(`Имя: ${name}`)
