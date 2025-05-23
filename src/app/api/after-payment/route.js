@@ -10,7 +10,7 @@ import path from 'path'
 
 // 🔧 Путь к Roboto-Regular.ttf из public/fonts
 const FONT_PATH = path.join(process.cwd(), 'public', 'fonts', 'Roboto-Regular.ttf')
-
+console.log('📁 Используемый путь к шрифту:', FONT_PATH)
 // 🔧 Генерация PDF-сертификата
 async function generatePdf({ name, amount }) {
   if (!fs.existsSync(FONT_PATH)) {
