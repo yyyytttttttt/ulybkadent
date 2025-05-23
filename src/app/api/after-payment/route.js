@@ -5,33 +5,32 @@ import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import PDFDocument from 'pdfkit'
 import { Readable } from 'stream'
-import { fileURLToPath } from 'url'
-import path, { dirname, resolve } from 'path'
+import fs from 'fs'
+import path from 'path'
 
-// Вычисляем путь к шрифту (работает в Next.js на сервере)
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-const FONT_PATH = resolve(__dirname, '../../../../public/fonts/Roboto-Regular.ttf')
+// 🔧 Путь к Roboto-Regular.ttf из public/fonts
+const FONT_PATH = path.join(process.cwd(), 'public', 'fonts', 'Roboto-Regular.ttf')
 
-// 🔧 Генератор PDF-сертификата
+// 🔧 Генерация PDF-сертификата
 async function generatePdf({ name, amount }) {
+  if (!fs.existsSync(FONT_PATH)) {
+    throw new Error(`❌ Шрифт не найден по пути: ${FONT_PATH}`)
+  }
+
   const doc = new PDFDocument()
   const stream = new Readable({ read() {} })
 
   doc.on('data', chunk => stream.push(chunk))
   doc.on('end', () => stream.push(null))
 
-  // ✅ Регистрируем шрифт
   doc.registerFont('Roboto', FONT_PATH)
   doc.font('Roboto')
 
-  // 📋 Метаданные
   doc.info = {
     Title: 'Подарочный сертификат',
     Author: 'Улыбка'
   }
 
-  // 📄 Содержимое PDF
   doc.fontSize(24).text('🎁 Подарочный сертификат', { align: 'center' })
   doc.moveDown()
   doc.fontSize(18).text(`Имя: ${name}`)
@@ -45,7 +44,7 @@ async function generatePdf({ name, amount }) {
   return Buffer.concat(chunks)
 }
 
-// 📧 Отправка письма
+// 📧 Отправка письма с вложением
 async function sendEmailWithAttachment({ email, name, pdfBuffer }) {
   const transporter = nodemailer.createTransport({
     host: 'smtp.mail.ru',
@@ -87,7 +86,7 @@ export async function POST(req) {
 
     return NextResponse.json({ success: true })
   } catch (err) {
-    console.error('Ошибка при генерации или отправке:', err)
+    console.error('❌ Ошибка при генерации или отправке:', err)
     return NextResponse.json({ error: String(err.stack) }, { status: 500 })
   }
 }
