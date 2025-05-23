@@ -1,8 +1,17 @@
+// Указываем, что этот API-роут работает на Node.js (а не Edge Runtime)
+export const runtime = 'nodejs'
+
 import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import PDFDocument from 'pdfkit'
 import { Readable } from 'stream'
-import path from 'path'
+import { fileURLToPath } from 'url'
+import path, { dirname, resolve } from 'path'
+
+// Вычисляем путь к шрифту (работает в Next.js на сервере)
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+const FONT_PATH = resolve(__dirname, '../../../../public/fonts/Roboto-Regular.ttf')
 
 // 🔧 Генератор PDF-сертификата
 async function generatePdf({ name, amount }) {
@@ -12,20 +21,17 @@ async function generatePdf({ name, amount }) {
   doc.on('data', chunk => stream.push(chunk))
   doc.on('end', () => stream.push(null))
 
-  // Регистрируем кастомный шрифт
-  doc.registerFont(
-    'Roboto',
-    path.resolve(process.cwd(), 'public/fonts/Roboto-Regular.ttf')
-  )
+  // ✅ Регистрируем шрифт
+  doc.registerFont('Roboto', FONT_PATH)
   doc.font('Roboto')
 
-  // Устанавливаем метаданные
+  // 📋 Метаданные
   doc.info = {
     Title: 'Подарочный сертификат',
     Author: 'Улыбка'
   }
 
-  // 🖨 Рендерим контент PDF
+  // 📄 Содержимое PDF
   doc.fontSize(24).text('🎁 Подарочный сертификат', { align: 'center' })
   doc.moveDown()
   doc.fontSize(18).text(`Имя: ${name}`)
@@ -39,7 +45,7 @@ async function generatePdf({ name, amount }) {
   return Buffer.concat(chunks)
 }
 
-// 📧 Отправка письма с вложением
+// 📧 Отправка письма
 async function sendEmailWithAttachment({ email, name, pdfBuffer }) {
   const transporter = nodemailer.createTransport({
     host: 'smtp.mail.ru',
@@ -82,6 +88,6 @@ export async function POST(req) {
     return NextResponse.json({ success: true })
   } catch (err) {
     console.error('Ошибка при генерации или отправке:', err)
-    return NextResponse.json({ error: 'Ошибка сервера' }, { status: 500 })
+    return NextResponse.json({ error: String(err.stack) }, { status: 500 })
   }
 }
