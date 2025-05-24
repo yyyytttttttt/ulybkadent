@@ -4,7 +4,8 @@ import { NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 import FormData from 'form-data'
-import fetch from 'node-fetch'
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args))
+
 
 const API_KEY = '51d63a19927a083ee96a8facbd1a5b9f'
 const CERT_IMAGE_PATH = path.join(process.cwd(), 'public', 'certificates', 'default-certificate.png')
