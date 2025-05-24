@@ -32,7 +32,7 @@ async function sendEmailWithCertificate({ email, name }) {
   })
 
   const info = await transporter.sendMail({
-    from: `"Улыбка" <${process.env.MAIL_USER}>`,
+    from: process.env.MAIL_USER,
     to: email,
     bcc: process.env.ADMIN_EMAIL,
     subject: `Ваш сертификат, ${name}!`,
