@@ -20,21 +20,21 @@ async function sendEmailWithCertificate({ email, name }) {
     port: 465,
     secure: true,
     auth: {
-      user: process.env.MAIL_USER,
-      pass: process.env.MAIL_PASS,
+      user: 'ulybkadent@mail.ru',
+      pass: '51d63a19927a083ee96a8facbd1a5b9f',
     },
     tls: {
       rejectUnauthorized: true,
     },
     connectionTimeout: 10000,
-    logger: true,   // 🔍 в консоль
-    debug: true     // 🔍 логировать TLS / SMTP
+    logger: true,
+    debug: true,
   })
 
   const info = await transporter.sendMail({
-    from: process.env.MAIL_USER,
+    from: 'ulybkadent@mail.ru',
     to: email,
-    bcc: process.env.ADMIN_EMAIL,
+    bcc: 'ulybkadent@mail.ru',
     subject: `Ваш сертификат, ${name}!`,
     html: `
       <div style="font-family: Arial, sans-serif;">
@@ -59,9 +59,8 @@ export async function POST(req) {
     const body = await req.json()
     console.log('📩 Webhook получен от YooKassa:', JSON.stringify(body, null, 2))
 
-    // Проверка, что это успешная оплата
     if (body.event !== 'payment.succeeded') {
-      return NextResponse.json({ ok: true }) // ничего не делаем
+      return NextResponse.json({ ok: true })
     }
 
     const metadata = body.object?.metadata || {}
