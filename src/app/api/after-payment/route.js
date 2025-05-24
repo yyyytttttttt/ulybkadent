@@ -27,6 +27,8 @@ async function sendEmailWithCertificate({ email, name }) {
       rejectUnauthorized: true,
     },
     connectionTimeout: 10000,
+    logger: true,   // 🔍 в консоль
+    debug: true     // 🔍 логировать TLS / SMTP
   })
 
   const info = await transporter.sendMail({
