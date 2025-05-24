@@ -1,57 +1,48 @@
-// Указываем, что API-роут работает на Node.js
 export const runtime = 'nodejs'
 
 import { NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
 import fs from 'fs'
 import path from 'path'
+import FormData from 'form-data'
+import fetch from 'node-fetch'
 
+const API_KEY = '51d63a19927a083ee96a8facbd1a5b9f'
 const CERT_IMAGE_PATH = path.join(process.cwd(), 'public', 'certificates', 'default-certificate.png')
 
-async function sendEmailWithCertificate({ email, name }) {
+async function sendEmailViaRestAPI({ email, name }) {
   if (!fs.existsSync(CERT_IMAGE_PATH)) {
     throw new Error(`❌ Сертификат не найден: ${CERT_IMAGE_PATH}`)
   }
 
-  const imageBuffer = fs.readFileSync(CERT_IMAGE_PATH)
-
-  const transporter = nodemailer.createTransport({
-    host: 'smtp.msndr.net',
-    port: 465,
-    secure: true,
-    auth: {
-      user: 'ulybkadent@mail.ru',
-      pass: '51d63a19927a083ee96a8facbd1a5b9f',
-    },
-    tls: {
-      rejectUnauthorized: true,
-    },
-    connectionTimeout: 10000,
-    logger: true,
-    debug: true,
+  const form = new FormData()
+  form.append('from_email', 'ulybkadent@mail.ru')
+  form.append('from_name', 'Улыбка Dent')
+  form.append('to', email)
+  form.append('subject', `Ваш сертификат, ${name}!`)
+  form.append('text', `Здравствуйте, ${name}! Благодарим за оплату. Ваш сертификат во вложении.`)
+  form.append('html', `<h2>Здравствуйте, ${name}!</h2><p>Ваш сертификат во вложении 🎁</p>`)
+  form.append('payment', 'credit')
+  form.append('attachments[]', fs.createReadStream(CERT_IMAGE_PATH), {
+    filename: 'Сертификат.png',
+    contentType: 'image/png',
   })
 
-  const info = await transporter.sendMail({
-    from: 'ulybkadent@mail.ru',
-    to: email,
-    bcc: 'ulybkadent@mail.ru',
-    subject: `Ваш сертификат, ${name}!`,
-    html: `
-      <div style="font-family: Arial, sans-serif;">
-        <h2>Здравствуйте, ${name}!</h2>
-        <p>Благодарим за оплату. Ваш подарочный сертификат во вложении 🎁</p>
-      </div>
-    `,
-    attachments: [
-      {
-        filename: 'Сертификат.png',
-        content: imageBuffer,
-        contentType: 'image/png',
-      },
-    ],
+  const response = await fetch('https://api.mailopost.ru/v1/email/messages', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${API_KEY}`,
+    },
+    body: form,
   })
 
-  console.log('✅ Письмо отправлено:', info.messageId)
+  const result = await response.json()
+  if (!response.ok) {
+    console.error('❌ Ошибка при отправке:', result)
+    throw new Error('Ошибка API Mailopost')
+  }
+
+  console.log('✅ Отправлено:', result)
+  return result
 }
 
 export async function POST(req) {
@@ -71,7 +62,7 @@ export async function POST(req) {
       return NextResponse.json({ error: 'Missing data' }, { status: 400 })
     }
 
-    await sendEmailWithCertificate({ email, name })
+    await sendEmailViaRestAPI({ email, name })
 
     return NextResponse.json({ success: true, message: 'Письмо отправлено' })
   } catch (error) {
@@ -79,7 +70,7 @@ export async function POST(req) {
     return NextResponse.json(
       {
         error: 'Ошибка сервера',
-        details: process.env.NODE_ENV === 'development' ? error.message : undefined,
+        details: error.message,
       },
       { status: 500 }
     )
