@@ -1,0 +1,20 @@
+[build]
+builder = "nixpacks"
+build_command = "npm install && npm run build"
+
+[start]
+cmd = "npm start"
+
+[envs]
+# YooKassa
+YOOKASSA_SHOP_ID = "1078429"
+YOOKASSA_SECRET_KEY = "live_HaFKoezNY8eyxejCsU-cWhamrFOh3B1sM_Fglt-w1yA"
+
+# SMTP (Mailopost)
+MAIL_USER = "ulybkadent@mail.ru"
+MAIL_PASS = "51d63a19927a083ee96a8facbd1a5b9f"
+ADMIN_EMAIL = "ulybkadent@mail.ru"
+
+# Настройки Node.js
+NODE_ENV = "production"
+PORT = "3000"
