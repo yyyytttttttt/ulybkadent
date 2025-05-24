@@ -9,61 +9,55 @@ import path from 'path'
 // 📍 Путь к PNG-файлу сертификата
 const CERT_IMAGE_PATH = path.join(process.cwd(), 'public', 'certificates', 'default-certificate.png')
 
-// 📧 Отправка письма с вложением
+// 📧 Отправка письма через SMTP Mailopost
 async function sendEmailWithCertificate({ email, name }) {
   try {
-    // Проверка существования файла сертификата
+    // 1. Проверка файла сертификата
     if (!fs.existsSync(CERT_IMAGE_PATH)) {
-      throw new Error(`❌ Сертификат PNG не найден по пути: ${CERT_IMAGE_PATH}`)
+      throw new Error(`❌ Файл сертификата не найден: ${CERT_IMAGE_PATH}`)
     }
 
+    // 2. Чтение файла сертификата
     const imageBuffer = fs.readFileSync(CERT_IMAGE_PATH)
 
-    // Настройка транспорта с актуальными параметрами для mail.ru
+    // 3. Настройка SMTP транспорта (данные из вашего изображения)
     const transporter = nodemailer.createTransport({
-      host: 'smtp.mail.ru',
-      port: 465, // Используем порт для SSL
-      secure: true, // true для порта 465
+      host: 'smtp.msndr.net', // SMTP-сервер Mailopost
+      port: 465,              // Порт для SSL (из вашего изображения)
+      secure: true,            // Использовать SSL
       auth: {
-        user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASS
+        user: 'ulybkadent@mail.ru', // Ваш логин из изображения
+        pass: '51d63a19927a083ee96a8facbd1a5b9f' // API-ключ как пароль
       },
-      connectionTimeout: 10000, // 10 секунд на подключение
-      socketTimeout: 10000,    // 10 секунд на операции
-      logger: true,            // Включить логирование
-      debug: true              // Включить отладку
+      tls: {
+        rejectUnauthorized: true
+      },
+      connectionTimeout: 10000,   // 10 секунд на подключение
+      logger: true               // Включить логирование
     })
 
-    // Проверка соединения перед отправкой
-    await transporter.verify()
-
-    // Отправка письма
+    // 4. Отправка письма
     const info = await transporter.sendMail({
-      from: `"Улыбка" <${process.env.MAIL_USER}>`,
+      from: '"Улыбка" <ulybkadent@mail.ru>', // Должен совпадать с логином
       to: email,
-      bcc: process.env.ADMIN_EMAIL,
-      subject: 'Ваш подарочный сертификат',
-      text: `Здравствуйте, ${name}! Ваш подарочный сертификат во вложении.`,
+      subject: `Ваш сертификат, ${name}!`,
       html: `
-        <div>
+        <div style="font-family: Arial, sans-serif;">
           <h2>Здравствуйте, ${name}!</h2>
           <p>Ваш подарочный сертификат во вложении.</p>
-          <p>С уважением, команда Улыбка</p>
         </div>
       `,
-      attachments: [
-        {
-          filename: 'Сертификат.png',
-          content: imageBuffer,
-          contentType: 'image/png'
-        }
-      ]
+      attachments: [{
+        filename: 'Сертификат.png',
+        content: imageBuffer,
+        contentType: 'image/png'
+      }]
     })
 
     console.log('Письмо отправлено:', info.messageId)
     return info
   } catch (error) {
-    console.error('Ошибка при отправке письма:', error)
+    console.error('Ошибка отправки:', error)
     throw error
   }
 }
@@ -71,43 +65,40 @@ async function sendEmailWithCertificate({ email, name }) {
 // 📬 Обработка POST-запроса
 export async function POST(req) {
   try {
-    const body = await req.json()
-    const { name, email } = body.object?.metadata || {}
+    // 1. Получаем данные из запроса
+    const { name, email } = await req.json()
 
+    // 2. Валидация данных
     if (!name || !email) {
       return NextResponse.json(
-        { error: 'Неверные данные: отсутствует имя или email' }, 
+        { error: 'Укажите имя и email' },
         { status: 400 }
       )
     }
 
-    // Валидация email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
+    // 3. Проверка формата email
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json(
         { error: 'Неверный формат email' },
         { status: 400 }
       )
     }
 
+    // 4. Отправка письма
     await sendEmailWithCertificate({ email, name })
 
     return NextResponse.json(
-      { success: true, message: 'Письмо с сертификатом успешно отправлено' },
+      { success: true, message: 'Письмо отправлено!' },
       { status: 200 }
     )
-  } catch (err) {
-    console.error('❌ Ошибка при обработке запроса:', err)
-    
-    // Определяем статус ошибки
-    const status = err.code === 'ETIMEDOUT' ? 504 : 500
-    
+  } catch (error) {
+    console.error('Ошибка API:', error)
     return NextResponse.json(
-      { 
-        error: 'Ошибка при отправке письма',
-        details: process.env.NODE_ENV === 'development' ? err.message : undefined
+      {
+        error: 'Ошибка отправки',
+        details: process.env.NODE_ENV === 'development' ? error.message : undefined
       },
-      { status }
+      { status: 500 }
     )
   }
 }
