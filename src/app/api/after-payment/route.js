@@ -1,4 +1,3 @@
-// Указываем, что API-роут работает на Node.js
 export const runtime = 'nodejs'
 
 import { NextResponse } from 'next/server'
@@ -6,9 +5,20 @@ import nodemailer from 'nodemailer'
 import fs from 'fs'
 import path from 'path'
 
-const CERT_IMAGE_PATH = path.join(process.cwd(), 'public', 'certificates', 'default-certificate.png')
+function getCertificatePathByAmount(amount) {
+  const knownAmounts = ['3000', '5000', '10000']
+  const safeAmount = parseInt(amount, 10).toString()
+  const filename = `certificate-${safeAmount}.png`
+  const fullPath = path.join(process.cwd(), 'public', 'certificates', filename)
 
-async function sendEmailWithCertificate({ email, name }) {
+  return knownAmounts.includes(safeAmount) && fs.existsSync(fullPath)
+    ? fullPath
+    : path.join(process.cwd(), 'public', 'certificates', 'default-certificate.png')
+}
+
+async function sendEmailWithCertificate({ email, name, amount }) {
+  const CERT_IMAGE_PATH = getCertificatePathByAmount(amount)
+
   if (!fs.existsSync(CERT_IMAGE_PATH)) {
     throw new Error(`❌ Сертификат не найден: ${CERT_IMAGE_PATH}`)
   }
@@ -40,6 +50,7 @@ async function sendEmailWithCertificate({ email, name }) {
       <div style="font-family: Arial, sans-serif;">
         <h2>Здравствуйте, ${name}!</h2>
         <p>Благодарим за оплату. Ваш подарочный сертификат во вложении 🎁</p>
+        <p><strong>Пожалуйста, предъявите чек и сертификат при использовании в клинике.</strong></p>
       </div>
     `,
     attachments: [
@@ -64,14 +75,14 @@ export async function POST(req) {
     }
 
     const metadata = body.object?.metadata || {}
-    const { name, email } = metadata
+    const { name, email, amount } = metadata
 
-    if (!name || !email) {
-      console.error('❌ Отсутствует name или email в metadata')
+    if (!name || !email || !amount) {
+      console.error('❌ Отсутствует name, email или amount в metadata')
       return NextResponse.json({ error: 'Missing data' }, { status: 400 })
     }
 
-    await sendEmailWithCertificate({ email, name })
+    await sendEmailWithCertificate({ email, name, amount })
 
     return NextResponse.json({ success: true, message: 'Письмо отправлено' })
   } catch (error) {
