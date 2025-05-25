@@ -26,7 +26,7 @@ const Page = () => {
             <p className="font-sfMedium text-40px-11px text-[#293D7A]">10 000 Р</p>
             <button
               onClick={()=>{
-                setSelectedAmount(10000)
+                setSelectedAmount(1)
                 setOpen(true)
               }}
               
@@ -46,7 +46,7 @@ const Page = () => {
             <p className="font-sfMedium text-40px-11px text-[#293D7A]">5 000 Р</p>
             <button
               onClick={()=>{
-                setSelectedAmount(5000)
+                setSelectedAmount(5)
                 setOpen(true)
               }}
              
