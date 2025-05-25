@@ -26,7 +26,7 @@ const Page = () => {
             <p className="font-sfMedium text-40px-11px text-[#293D7A]">10 000 Р</p>
             <button
               onClick={()=>{
-                setSelectedAmount(1)
+                setSelectedAmount(10)
                 setOpen(true)
               }}
               
