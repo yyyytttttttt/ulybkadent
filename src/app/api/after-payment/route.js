@@ -26,15 +26,15 @@ async function sendEmailWithCertificate({ email, name, amount }) {
   const imageBuffer = fs.readFileSync(CERT_IMAGE_PATH)
 
   const transporter = nodemailer.createTransport({
-    host: 'smtp.msndr.net',
+    host: 'smtp.mail.ru',
     port: 465,
     secure: true,
     auth: {
-      user: 'ulybkadent@mail.ru',
-      pass: '51d63a19927a083ee96a8facbd1a5b9f',
+      user: 'ulybkadent@mail.ru', // 
+      pass: 'uJdb9sLn2nFfJzbVCqPn', // обязательно пароль приложения, не обычный!
     },
     tls: {
-      rejectUnauthorized: true,
+      rejectUnauthorized: false,
     },
     connectionTimeout: 10000,
     logger: true,
@@ -42,9 +42,9 @@ async function sendEmailWithCertificate({ email, name, amount }) {
   })
 
   const info = await transporter.sendMail({
-    from: 'v.s@refstudio.ru',
+    from: '"Улыбка" <ulybkadent@mail.ru>', // должен совпадать с user
     to: email,
-    bcc: 'v.s@refstudio.ru',
+    bcc: 'ulybkadent@mail.ru',
     subject: `Ваш сертификат, ${name}!`,
     html: `
       <div style="font-family: Arial, sans-serif;">
