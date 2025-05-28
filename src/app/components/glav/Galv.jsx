@@ -367,7 +367,90 @@ const Galv = () => {
             >
               Узнать
             </Link>
+             <div>
+              <p className="font-sfMedium text-[#1F3475] text-sm mb-[1%]">
+                Почему чистка у стоматолога — это не страшно, а приятно?
+              </p>
+              <div className="flex bg-[#BCC7D3] rounded-[5px] w-[100%] md:w-[80%] justify-center py-[1%] px-[1%] mb-[1%]">
+                <div className="mr-[2%] w-[10%] xs:w-[5%] flex-shrink-0">
+                  <Image
+                    src="/images/news5.png"
+                    alt="us"
+                    width={50}
+                    height={50}
+                    quality={100}
+                  />
+                </div>
+                <div>
+                  <p className="w-[100%] font-sfLight text-[14px]">
+                      Когда вы слышите фразу “профессиональная гигиена полости рта”, что приходит в голову?Что-то холодное, шумное и «ой, больно»? Но в 2025 году всё по-другому. Рассказываем, почему чистка зубов у стоматолога
+                      стала почти как spa-процедура — только для вашей улыбки.
+                  </p>
+                </div>
               </div>
+            </div>
+            <Link
+              href="/News/professional-cleaning"
+              className="bg-[#BCC7D3] w-[25%] mb-[1%] rounded-[5px] flex items-center justify-center transition-colors duration-500 hover:bg-[#A6B1BF]"
+            >
+              Узнать
+            </Link>
+             <div>
+              <p className="font-sfMedium text-[#1F3475] text-sm mb-[1%]">
+                5 мифов о зубной боли, в которые вы до сих пор верите
+              </p>
+              <div className="flex bg-[#BCC7D3] rounded-[5px] w-[100%] md:w-[80%] justify-center py-[1%] px-[1%] mb-[1%]">
+                <div className="mr-[2%] w-[10%] xs:w-[5%] flex-shrink-0">
+                  <Image
+                    src="/images/news6.png"
+                    alt="us"
+                    width={50}
+                    height={50}
+                    quality={100}
+                  />
+                </div>
+                <div>
+                  <p className="w-[100%] font-sfLight text-[14px]">
+                      Зубная боль — одна из самых неприятных и пугающих. Но часто страх основан не на фактах, а на мифах. Мы собрали самые распространённые заблуждения и разобрались, почему они мешают вам сохранить здоровье зубов.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <Link
+              href="/News/toothache-myths"
+              className="bg-[#BCC7D3] w-[25%] mb-[1%] rounded-[5px] flex items-center justify-center transition-colors duration-500 hover:bg-[#A6B1BF]"
+            >
+              Узнать
+            </Link>
+            <div>
+              <p className="font-sfMedium text-[#1F3475] text-sm mb-[1%]">
+               Отбеливание в 2025: технологии, которые действительно работают
+              </p>
+              <div className="flex bg-[#BCC7D3] rounded-[5px] w-[100%] md:w-[80%] justify-center py-[1%] px-[1%] mb-[1%]">
+                <div className="mr-[2%] w-[10%] xs:w-[5%] flex-shrink-0">
+                  <Image
+                    src="/images/news7.png"
+                    alt="us"
+                    width={50}
+                    height={50}
+                    quality={100}
+                  />
+                </div>
+                <div>
+                  <p className="w-[100%] font-sfLight text-[14px]">
+                      Мечтаете о белоснежной улыбке? В 2025 году — это проще, быстрее и безопаснее, чем когда-либо. Разбираемся, какие технологии действительно работают, что из них подойдёт именно вам, и почему важно отбеливаться у специалистов.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <Link
+              href="/News/Teethwhitening"
+              className="bg-[#BCC7D3] w-[25%] mb-[1%] rounded-[5px] flex items-center justify-center transition-colors duration-500 hover:bg-[#A6B1BF]"
+            >
+              Узнать
+            </Link>
+              </div>
+                
             </div>
           </section>
         

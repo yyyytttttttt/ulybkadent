@@ -31,6 +31,7 @@ const CustomSlider = () => {
   };
 
   const buttonTexts = [
+    "Перейти",
     "Записаться",
     "Записаться",
     "Записаться",
@@ -40,6 +41,7 @@ const CustomSlider = () => {
   ];
 
   const links = [
+    "https://ulybkadent.ru/Certificates/",
     null,
     null,
     null,
@@ -64,7 +66,21 @@ const CustomSlider = () => {
         }}
         onSlideChange={handleSlideChange}
       >
-        {/* Видео слайд */}
+        {/* Первый слайд – изображение */}
+        <SwiperSlide className="aspect-[5/5] xs:aspect-[12/5] overflow-hidden rounded-t-[20px]">
+          <div className="w-full h-full rounded-t-[20px] overflow-hidden">
+            <picture>
+              <source media="(max-width: 480px)" srcSet="/images/sl44802.png" />
+              <img
+                src="/images/sl14402.png"
+                alt="Slide 1"
+                className="w-full h-full object-cover rounded-t-[20px]"
+              />
+            </picture>
+          </div>
+        </SwiperSlide>
+
+        {/* Второй слайд – видео */}
         <SwiperSlide className="aspect-[5/5] xs:aspect-[12/5] overflow-hidden rounded-t-[20px]">
           <div className="w-full h-full rounded-t-[20px] overflow-hidden relative">
             <video
@@ -78,7 +94,6 @@ const CustomSlider = () => {
               <source src="/video/slivid.mp4" type="video/mp4" />
             </video>
 
-            {/* Лого и текст поверх видео */}
             <div className="absolute z-10 top-[10%] left-[40%] xs:left-[4%] w-[20%] xs:w-[10%]">
               <Image
                 className="h-auto w-full"
@@ -90,26 +105,26 @@ const CustomSlider = () => {
               />
             </div>
             <div className="absolute z-10 top-[80%] xs:top-[70%] left-[2%] -translate-y-1/2">
-            <div className="bg-gradient-to-r from-white/80 via-white/60 to-white/20 rounded-2xl p-4 shadow-xl  ">
-              <p className="font-semibold text-[#1F3475] text-30px-12px drop-shadow-sm">
-              «Лечение зубов под микроскопом»
-              </p>
-              <p className="font-sfRegular text-[#1F3475] text-30px-12px flex flex-col drop-shadow-sm">
-                <span>Идеальная точность и комфорт благодаря</span>
-                <span>новому дентальному микроскопу в стоматологии "Улыбка"</span>
-              </p>
+              <div className="bg-gradient-to-r from-white/80 via-white/60 to-white/20 rounded-2xl p-4 shadow-xl">
+                <p className="font-semibold text-[#1F3475] text-30px-12px drop-shadow-sm">
+                  «Лечение зубов под микроскопом»
+                </p>
+                <p className="font-sfRegular text-[#1F3475] text-30px-12px flex flex-col drop-shadow-sm">
+                  <span>Идеальная точность и комфорт благодаря</span>
+                  <span>новому дентальному микроскопу в стоматологии "Улыбка"</span>
+                </p>
+              </div>
             </div>
-</div>
           </div>
         </SwiperSlide>
 
-        {/* Картинки-слайды */}
+        {/* Остальные слайды – изображения */}
         {[
-          { img: "/images/sl4.png", mobile: "/images/sl4480.png", alt: "Slide 1" },
-          { img: "/images/sl5.png", mobile: "/images/sl5480.png", alt: "Slide 2" },
-          { img: "/images/sl7.png", mobile: "/images/sl7480.png", alt: "Slide 3" },
-          { img: "/images/sl8.png", mobile: "/images/sl8480.png", alt: "Slide 4" },
-          { img: "/images/sl9.png", mobile: "/images/sl9480.png", alt: "Slide 5" },
+          { img: "/images/sl4.png", mobile: "/images/sl4480.png", alt: "Slide 2" },
+          { img: "/images/sl5.png", mobile: "/images/sl5480.png", alt: "Slide 3" },
+          { img: "/images/sl7.png", mobile: "/images/sl7480.png", alt: "Slide 4" },
+          { img: "/images/sl8.png", mobile: "/images/sl8480.png", alt: "Slide 5" },
+          { img: "/images/sl9.png", mobile: "/images/sl9480.png", alt: "Slide 6" },
         ].map(({ img, mobile, alt }, index) => (
           <SwiperSlide
             key={index}
@@ -130,10 +145,10 @@ const CustomSlider = () => {
       </Swiper>
 
       {/* Кастомные стрелки снизу по центру */}
-      <button className="swiper-button-custom-prev absolute top-[50%] xs:top-[70%] md:top-[80%] left-[3%] xs:left-[60%] transform -translate-y-1/2 p-2 z-10">
+      <button className="swiper-button-custom-prev absolute top-[80%] xs:top-[70%] md:top-[80%] left-[3%] xs:left-[60%] transform -translate-y-1/2 p-2 z-10">
         <img src="/images/prev.png" alt="Previous Slide" />
       </button>
-      <button className="swiper-button-custom-next absolute top-[50%] xs:top-[70%] md:top-[80%] right-[3%] transform -translate-y-1/2 p-2 z-10">
+      <button className="swiper-button-custom-next absolute top-[80%] xs:top-[70%] md:top-[80%] right-[3%] transform -translate-y-1/2 p-2 z-10">
         <img src="/images/sled.png" alt="Next Slide" />
       </button>
 

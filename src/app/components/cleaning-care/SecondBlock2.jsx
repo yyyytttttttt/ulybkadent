@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-const SecondBlock = ({imageSrc,dynamicOrder,dynamicOrder1,Text,Text2}) => {
+const SecondBlock = ({imageSrc,dynamicOrder,dynamicOrder1,Text,Text2,children}) => {
   return (
     <div>
       <div className='flex justify-between flex-col xs:flex-row mb-[2%]  xs:items-center'>
@@ -33,6 +33,9 @@ const SecondBlock = ({imageSrc,dynamicOrder,dynamicOrder1,Text,Text2}) => {
                       <p className="font-sfLight text-30px-12px text-[#B49C80]">
                         {Text2}
                       </p>
+                      <div className="font-sfLight text-30px-12px text-[#B49C80]">
+                        {children}
+                      </div>
                   </div>
               </div>
           </div>

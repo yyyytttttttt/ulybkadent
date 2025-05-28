@@ -22,6 +22,7 @@ const SecondBlock = ({imageSrc,dynamicOrder,dynamicOrder1,Text,Text2}) => {
                   <Image 
                             src={imageSrc} // Путь к изображению из папки public
                             alt="altText"
+                           
                              // Текст для описания изображения
                             width={566} // Ширина изображения
                             height={561} // Высота изображения

@@ -6,7 +6,7 @@ import fs from 'fs'
 import path from 'path'
 
 function getCertificatePathByAmount(amount) {
-  const knownAmounts = ['1', '5', '10']
+  const knownAmounts = ['3000', '5000', '10000']
   const safeAmount = parseInt(amount, 10).toString()
   const filename = `certificate-${safeAmount}.png`
   const fullPath = path.join(process.cwd(), 'public', 'certificates', filename)

@@ -26,11 +26,11 @@ const Page = () => {
             <p className="font-sfMedium text-40px-11px text-[#293D7A]">10 000 Р</p>
             <button
               onClick={()=>{
-                setSelectedAmount(10)
+                setSelectedAmount(10000)
                 setOpen(true)
               }}
               
-              className="font-sfRegular text-20px-11px text-white bg-[#293D7A] px-[10%] py-[1%] rounded-[21px]"
+              className="font-sfRegular text-20px-11px text-white bg-[#293D7A] px-[10%] py-[1%] rounded-[21px] transition-all duration-500 hover:scale-105"
             >
               Купить онлайн
             </button>
@@ -46,11 +46,11 @@ const Page = () => {
             <p className="font-sfMedium text-40px-11px text-[#293D7A]">5 000 Р</p>
             <button
               onClick={()=>{
-                setSelectedAmount(5)
+                setSelectedAmount(5000)
                 setOpen(true)
               }}
              
-              className="font-sfRegular text-20px-11px text-white bg-[#293D7A] px-[10%] py-[1%] rounded-[21px]"
+              className="font-sfRegular text-20px-11px text-white bg-[#293D7A] px-[10%] py-[1%] rounded-[21px] transition-all duration-500 hover:scale-105"
             >
               Купить онлайн
             </button>
@@ -63,14 +63,14 @@ const Page = () => {
           <p className="font-sfRegular text-20px-11px mb-[1%] text-[#293D7A]">Подарочный сертификат</p>
           <p className="font-sfMedium text-30px-12px mb-[4%] text-[#293D7A]">Забота о здоровье</p>
           <div className="flex justify-between">
-            <p className="font-sfMedium text-40px-11px text-[#293D7A]">1 Р</p>
+            <p className="font-sfMedium text-40px-11px text-[#293D7A]">3000 Р</p>
             <button
               onClick={()=>{
-                  setSelectedAmount(1)
+                  setSelectedAmount(3000)
                   setOpen(true)
                 }}
               
-              className="font-sfRegular text-20px-11px text-white bg-[#293D7A] px-[10%] py-[1%] rounded-[21px]"
+              className="font-sfRegular text-20px-11px text-white bg-[#293D7A] px-[10%] py-[1%] rounded-[21px] transition-all duration-500 hover:scale-105"
             >
               Купить онлайн
             </button>
@@ -116,7 +116,10 @@ const Page = () => {
             <span>Выберите сертификат и </span>
             <span>оформите за пару минут!</span>
           </p>
-          <button className="font-sfRegular text-24px-15px text-white bg-[#293D7A] px-[2%] py-[1.5%] rounded-[21px] w-[40%]">Купить онлайн</button>
+          <button onClick={()=>{
+                  setSelectedAmount(3000)
+                  setOpen(true)
+                }} className="font-sfRegular text-24px-15px text-white bg-[#293D7A] px-[2%] py-[1.5%] rounded-[21px] w-[40%] transition-all duration-500 hover:scale-105">Купить онлайн</button>
         </div>
         <div className="w-full md:w-[40%]">
           <Image src="/images/cem.png" alt="Подарочный сертификат" width={572} height={534} quality={100} className="w-[100%] mb-[2%]" />
