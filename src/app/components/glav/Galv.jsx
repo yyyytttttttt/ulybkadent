@@ -127,9 +127,10 @@ const Galv = () => {
               <p className="font-sfRoundedBold text-30px-12px mb-[6%]">
                 Подарите здоровье и красоту
               </p>
-              <p className="font-sfRegular text-20px-11px flex flex-col">
+              <p className="font-sfRegular text-20px-11px flex flex-col ">
                 <span>В стоматологии "Улыбка" вы можете приобрести</span> 
-                <span>подарочный сертификат на любую сумму</span>
+                <span className="mb-[4%]">подарочный сертификат на любую сумму</span>
+                <Link className="text-[#1f3475] underline underline-offset-4 font-sfRegular text-16px-11px flex items-center cursor-pointer" href="https://ulybkadent.ru/Certificates/">перейти</Link>
               </p>
             </div>
             <div className="w-[35%] xs:w-[33%]">
