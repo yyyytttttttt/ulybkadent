@@ -48,7 +48,7 @@ const page = () => {
                 
             </div>
             <a 
-                href="/docs/pr01.06.2025.xlsx" 
+                href="/docs/pr241.xlsx" 
                 download
                 className='text-[#1f3475] underline underline-offset-4 font-sfRegular text-16px-11px flex items-center'
             >
