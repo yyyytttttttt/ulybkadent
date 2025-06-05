@@ -66,6 +66,11 @@ const page = () => {
             <span>2008-2021 гг. ГАУЗ МО БСП №1. Медицинская сестра</span>
             <span>2021 г. - настоящее время. Гигиенист стоматологический ООО «Улыбка»</span>
         </p>
+        <p className="flex flex-col bg-custom-gradient rounded-[5px] py-[4%] px-[4%] font-sfMedium text-20px-11px text-[#184FF8] gap-4 mb-[2%]">
+            <span>Сертификаты:</span>
+            <span>Семинар: «Неинвазивный и минимально - инвазивный подход в эстетической реабилитации»</span>
+            
+        </p>
        
        
 
