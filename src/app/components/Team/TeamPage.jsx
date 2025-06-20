@@ -203,13 +203,7 @@ const doctorsData = [
      location: "КЛИНИКА - УЛ. ЗВЁЗДНАЯ 10",
      specialization: "Пародонтолог"
    },
-   {
-     name: "zozyla",
-     image: "/images/zoz.png",
-     link: "/doctors/zozyla",
-     location: "КЛИНИКА - УЛ. ЗВЁЗДНАЯ 10",
-     specialization: "Ортопед"
-   }
+   
  ];
  const specializations = [
    "Терапевт",
