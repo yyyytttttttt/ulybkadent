@@ -29,10 +29,7 @@ export async function POST(req) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    const uploadsDir = path.join(process.cwd(), 'public', 'uploads');
-    if (!fs.existsSync(uploadsDir)) {
-      fs.mkdirSync(uploadsDir, { recursive: true });
-    }
+     
 
     const filePath = path.join(uploadsDir, file.name);
     await writeFile(filePath, buffer);
@@ -40,7 +37,7 @@ export async function POST(req) {
     const newReel = await prisma.reel.create({
       data: {
         title: file.name,
-        videoURL: `/uploads/${file.name}`, // ✅ исправлено
+        videoURL: `/video/${file.name}`, // ✅ исправлено
       },
     });
 
