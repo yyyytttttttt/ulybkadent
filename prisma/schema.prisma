@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Reel {
+  id        Int      @id @default(autoincrement())
+  title     String
+  videoURL  String
+  createdAt DateTime @default(now())
+  likes     Like[] 
+}
+model Like {
+  id Int @id @default(autoincrement())
+  reelId Int @unique
+  reel Reel? @relation(fields:[reelId],references:[id])
+  createdAt DateTime @default(now())
+}
