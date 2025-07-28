@@ -1,7 +1,7 @@
 import formidable from 'formidable';
 import fs from 'fs';
 import path from 'path';
-import { prisma } from '@/lib/prisma'; // путь к prisma.js
+import { prisma } from '#lib/prisma';
 
 // Отключаем встроенный body parser
 export const config = {
