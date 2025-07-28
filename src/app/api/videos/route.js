@@ -17,33 +17,4 @@ export async function GET() {
   }
 }
 
-export async function POST(req) {
-  try {
-    const formData = await req.formData();
-    const file = formData.get('video');
 
-    if (!file || typeof file.name !== 'string') {
-      return NextResponse.json({ error: 'Файл не получен' }, { status: 400 });
-    }
-
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-
-     
-
-    const filePath = path.join(uploadsDir, file.name);
-    await writeFile(filePath, buffer);
-
-    const newReel = await prisma.reel.create({
-      data: {
-        title: file.name,
-        videoURL: `/video/${file.name}`, // ✅ исправлено
-      },
-    });
-
-    return NextResponse.json(newReel, { status: 201 });
-  } catch (error) {
-    console.error('Ошибка при сохранении рилса:', error);
-    return NextResponse.json({ error: 'Ошибка сервера' }, { status: 500 });
-  }
-}

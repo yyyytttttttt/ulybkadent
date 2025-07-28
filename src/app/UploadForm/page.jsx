@@ -18,7 +18,7 @@ export default function Page() {
     formData.append('video', file)
 
     try {
-      const res = await fetch('/api/videos', {
+      const res = await fetch('api/upload', {
         method: 'POST',
         body: formData,
       })
