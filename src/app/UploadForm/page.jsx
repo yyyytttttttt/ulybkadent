@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 
 export default function Page() {
   const [file, setFile] = useState(null)
-  const [title, setTitle] = useState('')
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
 
@@ -18,7 +17,7 @@ export default function Page() {
     formData.append('video', file)
 
     try {
-      const res = await fetch('api/upload', {
+      const res = await fetch('/api/upload', {
         method: 'POST',
         body: formData,
       })
@@ -30,8 +29,8 @@ export default function Page() {
       setSuccess(true)
       setError('')
       setFile(null)
-      setTitle('')
     } catch (err) {
+      console.error(err)
       setError('Произошла ошибка при загрузке.')
       setSuccess(false)
     }
@@ -47,10 +46,6 @@ export default function Page() {
           Загрузка рилса 🎥
         </h1>
 
-        {/* Название */}
-       
-
-        {/* Файл */}
         <div>
           <label className="block mb-2 text-sm font-medium text-gray-700">
             Выберите видео-файл
@@ -63,7 +58,6 @@ export default function Page() {
           />
         </div>
 
-        {/* Кнопка */}
         <button
           type="submit"
           className="w-full py-3 px-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-lg rounded-xl shadow-md hover:shadow-lg transition-all duration-200"
@@ -71,7 +65,6 @@ export default function Page() {
           🚀 Загрузить видео
         </button>
 
-        {/* Уведомления */}
         {success && (
           <div className="text-green-600 text-center font-medium">
             ✅ Видео успешно загружено!
