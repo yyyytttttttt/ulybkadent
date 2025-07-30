@@ -1,7 +1,6 @@
 import { prisma } from '#lib/prisma';
-import formidable from 'formidable';
-import fs from 'fs';
 import AWS from 'aws-sdk';
+import Busboy from 'busboy';
 
 // Отключаем bodyParser
 export const config = {
@@ -25,37 +24,32 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Метод не разрешён' });
   }
 
-  const form = formidable({ keepExtensions: true });
+  const busboy = Busboy({ headers: req.headers });
+  let fileName = '';
+  let uploadPromise = null;
 
-  form.parse(req, async (err, fields, files) => {
-    if (err) {
-      console.error('Ошибка при разборе формы:', err);
-      return res.status(500).json({ error: 'Ошибка при обработке файла' });
-    }
-
-    const uploadedFile = Array.isArray(files.video) ? files.video[0] : files.video;
-
-    if (!uploadedFile) {
-      return res.status(400).json({ error: 'Файл не получен' });
-    }
-
-    const fileStream = fs.createReadStream(uploadedFile.filepath);
-    const originalName = uploadedFile.originalFilename.replace(/\s+/g, '_');
+  busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
+    const rawName = typeof filename === 'object' ? filename.filename : filename;
+    fileName = rawName.replace(/\s+/g, '_');
 
     const uploadParams = {
       Bucket: process.env.YA_BUCKET_NAME,
-      Key: `videos/${originalName}`,
-      Body: fileStream,
-      ContentType: uploadedFile.mimetype,
+      Key: `videos/${fileName}`,
+      Body: file,
+      ContentType: mimetype,
     };
 
+    uploadPromise = s3.upload(uploadParams).promise();
+  });
+
+  busboy.on('finish', async () => {
     try {
-      const result = await s3.upload(uploadParams).promise();
+      const result = await uploadPromise;
 
       const newReel = await prisma.reel.create({
         data: {
-          title: originalName,
-          videoURL: result.Location, // Ссылка из облака
+          title: fileName,
+          videoURL: result.Location,
         },
       });
 
@@ -64,8 +58,10 @@ export default async function handler(req, res) {
         reel: newReel,
       });
     } catch (error) {
-      console.error('Ошибка при загрузке в облако или сохранении в БД:', error);
-      return res.status(500).json({ error: 'Ошибка загрузки файла в облако или сохранения в базу данных' });
+      console.error('Ошибка при загрузке или сохранении:', error);
+      return res.status(500).json({ error: 'Ошибка при загрузке в облако или базе' });
     }
   });
+
+  req.pipe(busboy);
 }
