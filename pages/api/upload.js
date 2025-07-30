@@ -24,44 +24,52 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Метод не разрешён' });
   }
 
-  const busboy = Busboy({ headers: req.headers });
-  let fileName = '';
-  let uploadPromise = null;
+  const result = await new Promise((resolve, reject) => {
+    const busboy = Busboy({ headers: req.headers });
 
-  busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
-    const rawName = typeof filename === 'object' ? filename.filename : filename;
-    fileName = rawName.replace(/\s+/g, '_');
+    let fileName = '';
+    let uploadPromise = null;
 
-    const uploadParams = {
-      Bucket: process.env.YA_BUCKET_NAME,
-      Key: `videos/${fileName}`,
-      Body: file,
-      ContentType: mimetype,
-    };
+    busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
+      const rawName = typeof filename === 'object' ? filename.filename : filename;
+      fileName = rawName.replace(/\s+/g, '_');
 
-    uploadPromise = s3.upload(uploadParams).promise();
+      const uploadParams = {
+        Bucket: process.env.YA_BUCKET_NAME,
+        Key: `videos/${fileName}`,
+        Body: file,
+        ContentType: mimetype,
+      };
+
+      uploadPromise = s3.upload(uploadParams).promise();
+    });
+
+    busboy.on('finish', async () => {
+      try {
+        if (!uploadPromise) {
+          return reject(new Error('Файл не был передан'));
+        }
+
+        const uploadResult = await uploadPromise;
+
+        const newReel = await prisma.reel.create({
+          data: {
+            title: fileName,
+            videoURL: uploadResult.Location,
+          },
+        });
+
+        resolve({
+          message: 'Видео успешно загружено в облако',
+          reel: newReel,
+        });
+      } catch (err) {
+        reject(err);
+      }
+    });
+
+    req.pipe(busboy);
   });
 
-  busboy.on('finish', async () => {
-    try {
-      const result = await uploadPromise;
-
-      const newReel = await prisma.reel.create({
-        data: {
-          title: fileName,
-          videoURL: result.Location,
-        },
-      });
-
-      return res.status(200).json({
-        message: 'Видео успешно загружено в облако',
-        reel: newReel,
-      });
-    } catch (error) {
-      console.error('Ошибка при загрузке или сохранении:', error);
-      return res.status(500).json({ error: 'Ошибка при загрузке в облако или базе' });
-    }
-  });
-
-  req.pipe(busboy);
+  res.status(200).json(result);
 }
