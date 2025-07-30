@@ -17,7 +17,7 @@ export default async function ReelPage(props) {
   }
 
   return (
-    <div className="w-full h-screen bg-[#E8E2CF] flex items-center justify-center px-4">
+    <div className="w-full h-screen bg-[#E8E2CF] flex items-center justify-center ">
       <div className="relative max-w-[800px] w-full h-full lg:h-[95%] lg:rounded-[40px] overflow-hidden">
         <video
           src={reel.videoURL}

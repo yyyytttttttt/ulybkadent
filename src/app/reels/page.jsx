@@ -143,7 +143,7 @@ export default function ReelsPage() {
               <div className="absolute top-1/2 right-4 -translate-y-1/2 flex flex-col gap-3 z-10">
                 <button
                   onClick={() => downloadVideo(video.videoURL)}
-                  className="w-[65px] h-[65px] bg-[#2F2F2F] text-[#E8E2CF] rounded-2xl  text-2xl flex items-center justify-center"
+                  className="w-[40px] xs:w-[65px] h-[40px] xs:h-[65px] bg-[#2F2F2F] text-[#E8E2CF] rounded-[8px] xs:rounded-2xl  text-2xl flex items-center justify-center"
                 >
                    <svg className='w-[60%] h-auto' xmlns="http://www.w3.org/2000/svg" width="118" height="118" viewBox="0 0 118 118" fill="none">
                     <path d="M102.743 73.3875V92.9575C102.743 95.5526 101.712 98.0414 99.8768 99.8765C98.0417 101.712 95.5529 102.742 92.9577 102.742H24.4627C21.8676 102.742 19.3787 101.712 17.5437 99.8765C15.7087 98.0414 14.6777 95.5526 14.6777 92.9575V73.3875" stroke="#E8E2CF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
@@ -153,7 +153,7 @@ export default function ReelsPage() {
                 </button>
                 <button
                   onClick={() => shareVideo(video.id)}
-                  className="w-[65px] h-[65px] bg-[#2F2F2F] text-[#E8E2CF] rounded-2xl text-2xl flex items-center justify-center"
+                  className="w-[40px] xs:w-[65px] h-[40px] xs:h-[65px] bg-[#2F2F2F] text-[#E8E2CF] rounded-[8px] xs:rounded-2xl text-2xl flex items-center justify-center"
                 >
                     <svg className='w-[50%] h-auto' xmlns="http://www.w3.org/2000/svg" width="118" height="119" viewBox="0 0 118 119" fill="none">
                     <path d="M88.4398 40.0376C96.5463 40.0376 103.118 33.466 103.118 25.3595C103.118 17.253 96.5463 10.6814 88.4398 10.6814C80.3333 10.6814 73.7617 17.253 73.7617 25.3595C73.7617 33.466 80.3333 40.0376 88.4398 40.0376Z" stroke="#E8E2CF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
@@ -166,16 +166,16 @@ export default function ReelsPage() {
                 </button>
                 <button
                   onClick={() => likeVideo(video.id)}
-                  className="w-[65px] h-[65px] bg-[#2F2F2F] text-[#E8E2CF] rounded-2xl text-xl flex flex-col items-center justify-center"
+                  className="w-[40px]  xs:w-[65px] h-[40px] xs:h-[65px] bg-[#2F2F2F] text-[#E8E2CF] rounded-[8px] xs:rounded-2xl text-xl flex flex-col items-center justify-center"
                 >
                   <svg className='w-[50%] h-auto' xmlns="http://www.w3.org/2000/svg" width="118" height="119" viewBox="0 0 118 119" fill="none">
                     <path d="M100.106 24.774C90.2042 14.8722 73.9371 14.8722 64.0353 24.774L59.0845 29.7248L54.1336 24.774C44.2319 14.8722 27.9647 14.8722 18.063 24.774C8.16129 34.6757 8.16129 50.9428 18.063 60.8445L59.0845 101.866L100.106 60.8445C110.008 50.9428 110.008 34.6757 100.106 24.774Z" stroke="#E8E2CF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                  <span className="text-sm mt-1">({video.likes.length})</span>
+                  <span className="text-xs  xs:text-sm mt-0 xs:mt-1">({video.likes.length})</span>
                 </button>
                 <button
                   onClick={() => toggleMute(video.id)}
-                  className="w-[65px] h-[65px] bg-[#2F2F2F] text-[#E8E2CF] rounded-2xl text-2xl flex items-center justify-center"
+                  className="w-[40px] xs:w-[65px] h-[40px] xs:h-[65px] bg-[#2F2F2F] text-[#E8E2CF] rounded-[8px] xs:rounded-2xl bg-[#2F2F2F] text-[#E8E2CF] rounded-2xl text-2xl flex items-center justify-center"
                 >
                   {mutedMap[video.id] ? '🔇' : '🔊'}
                 </button>
@@ -183,7 +183,7 @@ export default function ReelsPage() {
 
               {/* Стрелка вниз */}
               <div className="absolute bottom-6 left-[44%] xs:left-[45%] w-[15%] xs:w-[10%] flex justify-center z-10">
-                <svg className='text-[#E8E2CF] w-full h-auto ' xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140" fill="none">
+                <svg className='text-[#E8E2CF] w-[50%] h-auto ' xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140" fill="none">
                 <rect x="0.457031" y="70.0403" width="4" height="98.2505" rx="2" transform="rotate(-45 0.457031 70.0403)" fill="#E8E2CF"/>
                 <rect width="4" height="98.2505" rx="2" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 139.543 70.2562)" fill="#E8E2CF"/>
                 <rect width="4" height="98.2505" rx="2" transform="matrix(0 -1 -1 0 118.504 48.1958)" fill="#E8E2CF"/>
