@@ -1,9 +1,9 @@
-import { prisma } from '#lib/prisma'
-import Link from 'next/link'
+import Link from "next/link"
+export default async function ReelPage(props) {
+  const { id } = props.params
 
-export default async function ReelPage({ params }) {
   const reel = await prisma.reel.findUnique({
-    where: { id: Number(params.id) },
+    where: { id: Number(id) },
     include: { likes: true },
   })
 
@@ -18,7 +18,6 @@ export default async function ReelPage({ params }) {
   return (
     <div className="w-full h-screen bg-[#E8E2CF] flex items-center justify-center px-4">
       <div className="relative max-w-[800px] w-full h-full lg:h-[95%] lg:rounded-[40px] overflow-hidden">
-        {/* Видео без интерфейса */}
         <video
           src={reel.videoURL}
           autoPlay
@@ -28,7 +27,6 @@ export default async function ReelPage({ params }) {
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
         />
 
-        {/* Кнопка "Истории" вверху слева */}
         <div className="absolute top-4 left-4 z-10">
           <Link
             href="/reels"
@@ -38,7 +36,6 @@ export default async function ReelPage({ params }) {
           </Link>
         </div>
 
-        {/* Блок с лайками */}
         <div className="absolute bottom-6 left-0 w-full flex justify-center z-10">
           <p className="text-white text-lg bg-black/50 px-4 py-2 rounded-xl">
             ❤️ Количество лайков: {reel.likes.length}
