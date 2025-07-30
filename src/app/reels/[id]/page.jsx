@@ -1,3 +1,4 @@
+import { prisma } from "#lib/prisma"
 import Link from "next/link"
 export default async function ReelPage(props) {
   const { id } = props.params
