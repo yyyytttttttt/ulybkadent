@@ -122,7 +122,7 @@ const Galv = () => {
             </section>
           </div>
          
-          <section className="flex justify-between bg-[#E8E2CF] rounded-[12px] px-[4.5%] py-[5%] xs:py-[8%] items-center mb-[2%]">
+          <section className="flex justify-between bg-[#E8E2CF] rounded-[12px] px-[4.5%] py-[5%] xs:py-[5%] items-center mb-[2%]">
             <div>
               <p className="font-sfRoundedBold text-30px-12px mb-[6%]">
                 Подарите здоровье и красоту
@@ -133,10 +133,31 @@ const Galv = () => {
                 <Link className="text-[#1f3475] underline underline-offset-4 font-sfRegular text-16px-11px flex items-center cursor-pointer" href="https://ulybkadent.ru/Certificates/">перейти</Link>
               </p>
             </div>
-            <div className="w-[35%] xs:w-[33%]">
+            <div className="w-[25%] xs:w-[23%]">
               <Image
               className="w-full h-auto"
                 src="/images/pod.svg"
+                alt="us"
+                width={172}
+                height={133}
+              />
+            </div>
+          </section>
+           <section className="flex justify-between bg-[#E8E2CF] rounded-[12px] px-[4.5%] py-[5%] xs:py-[5%] items-center mb-[2%]">
+            <div>
+              <p className="font-sfRoundedBold text-30px-12px mb-[6%]">
+                Истории клиники
+              </p>
+              <p className="font-sfRegular text-20px-11px flex flex-col   ">
+                <span className="mb-[6%]">Загляните в наши истории, чтобы первыми узнавать о новостях и акциях клиники!</span> 
+                
+                <Link className="text-[#1f3475] underline underline-offset-4 font-sfRegular text-16px-11px flex items-center cursor-pointer" href="/reels">перейти</Link>
+              </p>
+            </div>
+            <div className="w-[25%] xs:w-[23%]">
+              <Image
+              className="w-full h-auto"
+                src="/images/chat.svg"
                 alt="us"
                 width={172}
                 height={133}
