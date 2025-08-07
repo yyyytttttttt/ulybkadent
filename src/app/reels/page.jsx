@@ -117,7 +117,7 @@ export default function ReelsPage() {
               </div>
 
               {/* Левые кнопки всегда слева */}
-              <div className="absolute bottom-[6%] left-4  flex flex-col gap-3 z-10">
+              <div className="absolute bottom-[15%] left-4  flex flex-col gap-3 z-10">
                 <Link
                     href="/"
                     className="w-[70px] h-[40px] md:w-[140px] md:h-[100px] bg-[#2F2F2F] text-[#E8E2CF] rounded-[8px] text-20px-11px flex items-center justify-center text-center"
@@ -140,7 +140,7 @@ export default function ReelsPage() {
               </div>
 
               {/* Правые кнопки поверх */}
-              <div className="absolute bottom-[6%] right-4  flex flex-col gap-3 z-10">
+              <div className="absolute bottom-[15%] right-4  flex flex-col gap-3 z-10">
                 <button
                   onClick={() => downloadVideo(video.videoURL)}
                   className="w-[40px] xs:w-[65px] h-[40px] xs:h-[65px] bg-[#2F2F2F] text-[#E8E2CF] rounded-[8px] xs:rounded-2xl  text-2xl flex items-center justify-center"
