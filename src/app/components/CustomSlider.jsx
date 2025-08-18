@@ -31,6 +31,8 @@ const CustomSlider = () => {
   };
 
   const buttonTexts = [
+    "Перейти",
+    
     "Записаться",
     "Перейти",
     "Записаться",
@@ -68,6 +70,18 @@ const CustomSlider = () => {
         }}
         onSlideChange={handleSlideChange}
       >
+        <SwiperSlide className="aspect-[5/5] xs:aspect-[12/5] overflow-hidden rounded-t-[20px]">
+          <div className="w-full h-full rounded-t-[20px] overflow-hidden">
+            <picture>
+              <source media="(max-width: 480px)" srcSet="/images/sl2004.png" />
+              <img
+                src="/images/sl200.png"
+                alt="Slide 1"
+                className="w-full h-full object-cover rounded-t-[20px]"
+              />
+            </picture>
+          </div>
+        </SwiperSlide>
         {/* Первый слайд – изображение */}
         <SwiperSlide className="aspect-[5/5] xs:aspect-[12/5] overflow-hidden rounded-t-[20px]">
           <div className="w-full h-full rounded-t-[20px] overflow-hidden">
