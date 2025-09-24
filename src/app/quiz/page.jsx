@@ -165,7 +165,7 @@ const page = () => {
           </div>
          
             <div className="max-w-[1150px] mx-auto mb-[4%]">
-            <p className="text-[clamp(1rem,0.6296rem+1.8519vw,2.25rem)] mb-2  font-sfRoundedBold text-center text-[#1F3475]">Как часто вы делаете профессиональную чистку?</p>
+            <p className="text-[clamp(1rem,0.6296rem+1.8519vw,2.25rem)] mb-2  font-sfRoundedBold text-center text-[#1F3475]">Есть ли у вас такие признаки?</p>
             <p className="text-[clamp(0.875rem,0.6898rem+0.9259vw,1.5rem)] mb-4 text-center text-[#1F3475] font-sfRegular" >Несколько вариантов ответа*</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-between ">
                 {SYMPTOMS.map((item) => {
