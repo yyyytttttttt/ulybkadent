@@ -63,10 +63,10 @@ const Page = () => {
           <p className="font-sfRegular text-20px-11px mb-[1%] text-[#293D7A]">Подарочный сертификат</p>
           <p className="font-sfMedium text-30px-12px mb-[4%] text-[#293D7A]">Забота о здоровье</p>
           <div className="flex justify-between">
-            <p className="font-sfMedium text-40px-11px text-[#293D7A]">3000 Р</p>
+            <p className="font-sfMedium text-40px-11px text-[#293D7A]">1 Р</p>
             <button
               onClick={()=>{
-                  setSelectedAmount(3000)
+                  setSelectedAmount(1)
                   setOpen(true)
                 }}
               
