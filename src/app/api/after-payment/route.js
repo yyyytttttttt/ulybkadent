@@ -8,22 +8,21 @@ import path from 'path';
 // ---------- utils ----------
 function normalizeAmount(raw) {
   if (raw == null) return null;
-  const str = String(raw).replace(',', '.').trim();
-  const num = Number.parseFloat(str);
-  if (Number.isNaN(num)) return null;
-  return Math.round(num); // 3000.00 -> 3000
+  const n = Number.parseFloat(String(raw).replace(',', '.'));
+  return Number.isNaN(n) ? null : Math.round(n);
 }
 
 function getCertificatePathByAmount(amount) {
   const amountRub = normalizeAmount(amount);
   const known = new Set([3000, 5000, 10000]);
+
   const base = path.join(process.cwd(), 'public', 'certificates');
   const filename = `certificate-${amountRub}.png`;
   const candidate = path.join(base, filename);
 
   return amountRub && known.has(amountRub) && fs.existsSync(candidate)
     ? candidate
-    : path.join(base, 'public', 'certificates', 'default-certificate.png');
+    : path.join(base, 'default-certificate.png'); // ← фикс
 }
 
 // анти-дубликаты webhook-событий (в проде — хранить в БД/Redis)

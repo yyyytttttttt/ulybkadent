@@ -29,7 +29,11 @@ yarn-error.log*
 
 # vercel
 .vercel
-
+# env (не пушим настоящие секреты)
+.env
+.env.*
+!.env.example
+!.env.local.example
 # typescript
 *.tsbuildinfo
 next-env.d.ts
