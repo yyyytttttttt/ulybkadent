@@ -53,6 +53,7 @@ const page = () => {
         />
         <div>
         <p className="flex flex-col bg-custom-gradient rounded-[5px] py-[4%] px-[4%] font-sfMedium text-20px-11px text-[#184FF8] gap-4 mb-[2%]">
+            <span className="text-[clamp(1rem,0.7143rem+1.4286vw,2rem)]">Образование и квалификация</span>
             <span>1979-1985 гг. Московский Медицинский Стоматологический институт</span>
             <span>1985-1986 гг. Интернатура по специальности терапевтическая стоматология</span>
             <span>1986-1987 гг. Стоматологическая поликлиника г. Балашихи. Стоматолог-терапевт</span>
@@ -61,6 +62,7 @@ const page = () => {
             <span>1998 г. Повышение квалификации по функциональным методам лечения зубочелюстных аномалий</span>
         </p>
         <p className="flex flex-col bg-custom-gradient rounded-[5px] py-[4%] px-[4%] font-sfMedium text-20px-11px text-[#184FF8] gap-4 mb-[2%]">
+          
             <span>1999 г. Моники стоматология усовершенствования</span>
             <span>2003 г. Повышение квалификации «Ортодонтия»</span>
             <span>2007 г. Повышение квалификации «Ортодонтия»</span>
@@ -75,6 +77,14 @@ const page = () => {
             <span>2022 г. Повышение квалификации по профилактике COVID-19</span>
             <span>2022 г. Повышение квалификации «Инфекционная безопасность и профилактика СМП в медицинской организации»</span>
         </p>
+          <p className="flex flex-col bg-custom-gradient rounded-[5px] py-[4%] px-[4%] font-sfMedium text-20px-11px text-[#184FF8] gap-4 mb-[2%]">
+            <span className="text-[clamp(1rem,0.7143rem+1.4286vw,2rem)]">Сертификаты</span>
+            <span>
+              2024 г. «Дискуссионный клуб
+              "Практическая стоматология 2024"
+            </span>
+            <span>2024 г. Участник мероприятия «Практическая стоматология»</span>
+            </p>
        
         <p className="flex flex-col bg-custom-gradient rounded-[5px] py-[4%] px-[4%] font-sfMedium text-20px-11px text-[#184FF8] gap-4 mb-[2%]">
             <span>Опыт работы:</span>

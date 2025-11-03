@@ -134,6 +134,35 @@ const doctorsData = [
      specialization: "Терапевт"
    },
    {
+     name: "Lychenko",
+     image: "/images/Lychenko.png",
+     link: "/doctors/Lychenko",
+     location: "КЛИНИКА - УЛ. ЗАРЕЧНАЯ 9",
+     specialization: "Терапевт"
+   },
+   {
+     name: "Guliev",
+     image: "/images/Guliev.png",
+     link: "/doctors/Guliev",
+     location: "КЛИНИКА - УЛ. ЗАРЕЧНАЯ 9",
+     specialization: "Cтоматолог - хирург"
+   },
+   {
+     name: "Goov",
+     image: "/images/Goov.png",
+     link: "/doctors/Goov",
+     location: "КЛИНИКА - УЛ. ЗАРЕЧНАЯ 9",
+     specialization: "Cтоматолог - хирург"
+   },
+   
+   {
+     name: "Gulieva",
+     image: "/images/Gulieva.png",
+     link: "/doctors/Gulieva",
+     location: "КЛИНИКА - УЛ. ЗАРЕЧНАЯ 9",
+     specialization: "Cтоматолог - хирург"
+   },
+   {
      name: "Kapustina",
      image: "/images/c4.png",
      link: "/doctors/Kapustina",
@@ -334,6 +363,7 @@ const TeamPage = () => {
       width={107}
       height={101}
       quality={100}
+      
     />
   </div>
 
@@ -373,6 +403,8 @@ const TeamPage = () => {
                         width={670}
                         height={519}
                         quality={100}
+                        className=" rounded-t-[40px] md:rounded-t-[60px] h-auto"
+                        
                      />
                      <button className="text-[#293D7A] text-20px-11px py-[3%] w-full bg-[#E8E2CF] rounded-b-[70px] transition duration-500 ease-in-out hover:text-[#BDB295]">
                         {doctor.location}

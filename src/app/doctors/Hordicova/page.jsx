@@ -53,6 +53,7 @@ const page = () => {
         />
         <div>
         <p className="flex flex-col bg-custom-gradient rounded-[5px] py-[4%] px-[4%] font-sfMedium text-20px-11px text-[#184FF8] gap-4 mb-[2%]">
+            <span className="text-[clamp(1rem,0.7143rem+1.4286vw,2rem)]">Образование и квалификация</span>
             <span>1986-1989 гг. Костромское медицинское училище</span>
             <span>Специальность – зубоврачебная</span>
             <span>Квалификация – зубной врач</span>
@@ -70,6 +71,27 @@ const page = () => {
             <span>2021 г. Повышение квалификации «Актуальные вопросы профилактики, диагностики и лечения коронавирусной инфекции (COVID-19)»</span>
             <span>2021 г. Цикл «Интенсивный обучающий практический курс по моделированию и реставрации дистальной группы зубов»</span>
             <span>2023 г. Обучающий цикл по эндодонтическому лечению «Прокачай своё эндо»</span>
+        </p>
+         <p className="flex flex-col bg-custom-gradient rounded-[5px] py-[4%] px-[4%] font-sfMedium text-20px-11px text-[#184FF8] gap-4 mb-[2%]">
+            <span className="text-[clamp(1rem,0.7143rem+1.4286vw,2rem)]">Сертификаты</span>
+            <span>2019 г. Attended the International course of Dr. Yoshi Terauchi «Non-surgical retreatment in endodontics» held in Moscow, Russia</span>
+
+            <span>
+              2023 г. Участник курса по изучению протоколов обработки, ирригации и обтурации корневых каналов.
+              Работа с микроскопом
+            </span>
+            <span>
+              2024 г. Участник курса «МОРФОЛОГИЯ ПЕРЕДНИХ И БОКОВЫХ ЗУБОВ.
+              КОНЦЕПЦИЯ AVS»
+            </span>
+            <span>2024 г. Участник курса «Постэндодонтическая реабилитация зубов. Вкладка, штифт, композитный build-up без штифта»</span>
+            <span>2024 г. «Блич-реставрации и композитные виниры»</span>
+            <span>
+              2025 г. ULTIMATE ENDO.
+              КЛИНИЧЕСКАЯ ЭНДОДОНТИЯ:
+              ОТ ДИАГНОСТИКИ ДО ОБТУРАЦИИ
+            </span>
+
         </p>
         <p className="flex flex-col bg-custom-gradient rounded-[5px] py-[4%] px-[4%] font-sfMedium text-20px-11px text-[#184FF8] gap-4 mb-[2%]">
             <span>Опыт работы:</span>

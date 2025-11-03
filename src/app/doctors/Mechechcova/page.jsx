@@ -52,6 +52,7 @@ const page = () => {
         />
         <div>
         <p className="flex flex-col bg-custom-gradient rounded-[5px] py-[4%] px-[4%] font-sfMedium text-20px-11px text-[#184FF8] gap-4 mb-[2%]">
+            <span className="text-[clamp(1rem,0.7143rem+1.4286vw,2rem)]">Образование и квалификация</span>
             <span>1992-1997 гг. Архангельская государственная медицинская академия. Стоматологический факультет. Специальность: Врач-стоматолог.</span>
             <span>Интернатура по специальности: Детская стоматология</span>
             <span>Профессиональная переподготовка: Стоматология терапевтическая</span>
@@ -62,7 +63,7 @@ const page = () => {
             <span>Повышение квалификации: «Стоматология терапевтическая»</span>
         </p>
         <p className="flex flex-col bg-custom-gradient rounded-[5px] py-[4%] px-[4%] font-sfMedium text-20px-11px text-[#184FF8] gap-4 mb-[2%]">
-            <span>Дополнительное образование:</span>
+            <span className="text-[clamp(1rem,0.7143rem+1.4286vw,2rem)]">Дополнительное образование:</span>
             <span>2014 г. Стоматологический Клинический Учебный Центр «Рациональная эндодонтия с использованием вращающихся никель-титановых инструментов. Предсказуемость и высокие стандарты эндодонтического вмешательства».</span>
             <span>2016 г. «Принципы и стандарты эндодонтического лечения. Современный эндодонтический инструментарий».</span>
             <span>2018 г. У.Ц. S.T.I. «Сочетание офисного и домашнего отбеливания. Система Opalescence. Устранение дисколоритов с помощью композитной реставрации».</span>
@@ -70,7 +71,15 @@ const page = () => {
             <span>2021 г. У.Ц. S.T.I. «Современный подход к лечению апикального периодонтита. Перелечивание зубов с крупными апикальными очагами».</span>
         </p>
         <p className="flex flex-col bg-custom-gradient rounded-[5px] py-[4%] px-[4%] font-sfMedium text-20px-11px text-[#184FF8] gap-4 mb-[2%]">
-            <span>Опыт работы:</span>
+            <span className="text-[clamp(1rem,0.7143rem+1.4286vw,2rem)]">Сертификаты</span>
+            <span>2024 г. «Преображение улыбки: реставрация фронтальной группы зубов.</span>
+            <span>
+              2025 г. Участник конгресса Proteco Academy; Ist international Dental Congress. Humane Dentistry: Modern
+              Endodontics & Restoration Trends
+            </span>
+        </p>
+        <p className="flex flex-col bg-custom-gradient rounded-[5px] py-[4%] px-[4%] font-sfMedium text-20px-11px text-[#184FF8] gap-4 mb-[2%]">
+            <span className="text-[clamp(1rem,0.7143rem+1.4286vw,2rem)]">Опыт работы:</span>
             <span>1997-2000 гг. - Вологодская детская стоматологическая поликлиника №2. Врач-стоматолог детский</span>
             <span>1998-2001 гг. - УФСБ России по Вологодской области. Поликлиника военно-медицинской службы</span>
             <span>2000-2002 гг. - ГУЗ Отделенческая больница ст. Вологда СЖД. Врач-стоматолог</span>

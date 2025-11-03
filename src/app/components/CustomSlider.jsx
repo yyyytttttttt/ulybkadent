@@ -34,7 +34,7 @@ const CustomSlider = () => {
     
     "Перейти",
     
-    "Записаться",
+    
     "Перейти",
     "Записаться",
     "Записаться",
@@ -78,28 +78,16 @@ const CustomSlider = () => {
         <SwiperSlide className="aspect-[5/5] xs:aspect-[12/5] overflow-hidden rounded-t-[20px]">
           <div className="w-full h-full rounded-t-[20px] overflow-hidden">
             <picture>
-              <source media="(max-width: 480px)" srcSet="/images/sl2004.png" />
+              <source media="(max-width: 480px)" srcSet="/images/sl200412.png" />
               <img
-                src="/images/sl200.png"
+                src="/images/sl20041.png"
                 alt="Slide 1"
                 className="w-full h-full object-cover rounded-t-[20px]"
               />
             </picture>
           </div>
         </SwiperSlide>
-        {/* Первый слайд – изображение */}
-        <SwiperSlide className="aspect-[5/5] xs:aspect-[12/5] overflow-hidden rounded-t-[20px]">
-          <div className="w-full h-full rounded-t-[20px] overflow-hidden">
-            <picture>
-              <source media="(max-width: 480px)" srcSet="/images/sj1480.png" />
-              <img
-                src="/images/sj1.png"
-                alt="Slide 1"
-                className="w-full h-full object-cover rounded-t-[20px]"
-              />
-            </picture>
-          </div>
-        </SwiperSlide>
+      
         <SwiperSlide className="aspect-[5/5] xs:aspect-[12/5] overflow-hidden rounded-t-[20px]">
           <div className="w-full h-full rounded-t-[20px] overflow-hidden">
             <picture>

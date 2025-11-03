@@ -54,19 +54,27 @@ const page = () => {
         
         />
         <div>
-        <p className="flex flex-col bg-custom-gradient rounded-[5px] py-[4%] px-[4%] font-sfMedium text-20px-11px text-[#184FF8] gap-4 mb-[2%]">
+        <p className="flex flex-col bg-[rgba(0,0,0,0.03)] rounded-[5px] py-[4%] px-[4%] font-sfMedium text-20px-11px text-[#184FF8] gap-4 mb-[2%]">
+          <span className="text-[clamp(1rem,0.7143rem+1.4286vw,2rem)]">Образование и квалификация</span>
           <span>Врач-стоматолог-ортопед.</span>
           <span>1980-1985 гг. Московский медицинский стоматологический институт им. Н. А. Семашко. </span>
           <span> Стоматологический факультет. Специальность: Врач стоматолог.</span>
           <span>1985-1986 гг. Врач-стоматолог-ортопед, интернатура в Реутовской стоматологической поликлинике.</span>
         </p>
-        <p className="flex flex-col bg-custom-gradient rounded-[5px] py-[4%] px-[4%] font-sfMedium text-20px-11px text-[#184FF8] gap-4 mb-[2%]">
+        <p className="flex flex-col bg-[rgba(0,0,0,0.03)] rounded-[5px] py-[4%] px-[4%] font-sfMedium text-20px-11px text-[#184FF8] gap-4 mb-[2%]">
           <span>2002 г. Профессиональная переподготовка: “стоматология терапевтическая”.</span>
           <span>2020 г. Повышение квалификации по программе стоматология ортопедическая.</span>
           <span>2023 г. Повышение квалификации по программе стоматология ортопедическая.</span>
+          <span>2024 г. Участник семинара с практикой «Дентальная фотография на телефон»</span>
+          <span>2024 г. Участник мероприятия «Дискуссионный клуб» «Практическая стоматология 2024»</span>
+          <span>2024 г. Участник мероприятия «Практическая стоматология»</span>
+          <span>2024 г. Участник мероприятия «Современные аспекты ортопедической стоматологии»</span>
+          <span>2024 г. Участник практического курса «Базовый курс по имплантации. Ортопедический протокол.»</span>
+          <span>2024 г. Участник семинара-практикума: «Постэндодонтическая реабилитация зубов. Вкладка, штифт, композитный build-up без штифта»</span>
+          <span>2024 г. Участник семинара: «Протезирование полными съёмными протезами»</span>
         </p>
-        <p className="flex flex-col bg-custom-gradient rounded-[5px] py-[4%] px-[4%] font-sfMedium text-20px-11px text-[#184FF8] gap-4 mb-[2%]">
-          <span>Опыт работы:</span>
+        <p className="flex flex-col bg-[rgba(0,0,0,0.03)] rounded-[5px] py-[4%] px-[4%] font-sfMedium text-20px-11px text-[#184FF8] gap-4 mb-[2%]">
+          <span className="text-[clamp(1rem,0.7143rem+1.4286vw,2rem)]">Опыт работы:</span>
           <span>1987-2021 гг. - Врач-стоматолог-ортопед в МУ БСП №1</span>
           <span>2022 г. - по настоящее время - Врач-стоматолог-ортопед в ООО «Улыбка»</span>
         </p>
