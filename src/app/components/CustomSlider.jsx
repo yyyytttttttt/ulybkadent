@@ -48,7 +48,7 @@ const CustomSlider = () => {
     
     
     "https://ulybkadent.ru/reels/",
-    "Записаться",
+    
     "https://ulybkadent.ru/Certificates/",
     null,
     null,
