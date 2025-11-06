@@ -67,7 +67,7 @@ const doctorsData = [
      name: "Krapivnaia",
      image: "/images/c2.png",
      link: "/doctors/Krapivnaia",
-     location: "КЛИНИКА - УЛ. ЗАРЕЧНАЯ 9",
+     location: "КЛИНИКА - УЛ. ЗВЁЗДНАЯ 10",
      specialization: "Терапевт"
    },
    {
@@ -77,13 +77,7 @@ const doctorsData = [
      location: "КЛИНИКА - УЛ. ЗАРЕЧНАЯ 9",
      specialization: "Ортодонт"
    },
-   {
-     name: "Policova",
-     image: "/images/p1.png",
-     link: "/doctors/Policova",
-     location: "КЛИНИКА - УЛ. ЗАРЕЧНАЯ 9",
-     specialization: "Терапевт"
-   },
+  
    {
      name: "Rassolova",
      image: "/images/r.png",
@@ -137,7 +131,7 @@ const doctorsData = [
      name: "Lychenko",
      image: "/images/Lychenko.png",
      link: "/doctors/Lychenko",
-     location: "КЛИНИКА - УЛ. ЗАРЕЧНАЯ 9",
+     location: "КЛИНИКА - УЛ. ЗВЁЗДНАЯ 10",
      specialization: "Терапевт"
    },
    {
@@ -159,7 +153,7 @@ const doctorsData = [
      name: "Gulieva",
      image: "/images/Gulieva.png",
      link: "/doctors/Gulieva",
-     location: "КЛИНИКА - УЛ. ЗАРЕЧНАЯ 9",
+     location: "КЛИНИКА - УЛ. ЗВЁЗДНАЯ 10",
      specialization: "Cтоматолог - хирург"
    },
    {

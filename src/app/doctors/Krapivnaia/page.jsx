@@ -46,7 +46,7 @@ const page = () => {
         imageSrc="/images/kr.png"
         Text1="Крапивная Ирина Александровна" 
         Text2="Врач - стоматолог- терапевт"
-        Text3="КЛИНИКА - УЛ. ЗАРЕЧНАЯ 9"
+        Text3="КЛИНИКА - УЛ. ЗВЁЗДНАЯ 10"
         href="https://reservi.ru/stoma1c/624c1cc5-ddfc-4ee6-b108-0ad35473f01a"
         
         

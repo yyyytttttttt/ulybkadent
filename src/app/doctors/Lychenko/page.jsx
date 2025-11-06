@@ -46,7 +46,7 @@ const page = () => {
         imageSrc="/images/un.png"
         Text1="Ляшенко Ирина Ивановна" 
         Text2="Cтоматолог - терапевт"
-        Text3="КЛИНИКА - УЛ. ЗАРЕЧНАЯ 9"
+        Text3="КЛИНИКА - УЛ. ЗВЁЗДНАЯ 10"
         href="https://reservi.ru/stoma1c/624c1cc5-ddfc-4ee6-b108-0ad35473f01a"
         
         
