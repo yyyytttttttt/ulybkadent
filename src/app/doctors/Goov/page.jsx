@@ -44,7 +44,7 @@ const page = () => {
     <Layout >
       <section className="">
         <F
-        imageSrc="/images/un.png"
+        imageSrc="/images/un2.png"
         Text1="Гоов Мурат Артурович" 
         Text2="Cтоматолог - ортопед"
         Text3="КЛИНИКА - УЛ. ЗАРЕЧНАЯ 9"
@@ -90,42 +90,7 @@ const page = () => {
                 <span>2025 г. Участник курса «AURUM BRAIN DENTAL SESSION 42»</span>
         </p>
 
-        <BeforeAfterGallery
-          title="Работы по установке виниров"
-          items={[
-            {
-              id: "1",
-              before: { src: "/images/before111.png", alt: "Зубы до установки виниров" },
-              after: { src: "/images/after111.png", alt: "Зубы после установки виниров" },
-              caption: "",
-              initial: 50
-            },
-            {
-              id: "2",
-              before: { src: "/images/before222.png", alt: "Зубы до реставрации" },
-              after: { src: "/images/after222.png", alt: "Зубы после реставрации" },
-              caption: "",
-              initial: 50
-            },
-            {
-              id: "3",
-              before: { src: "/images/before333.png", alt: "Улыбка до коррекции" },
-              after: { src: "/images/after333.png", alt: "Улыбка после коррекции" },
-              caption: "",
-              initial: 50
-            },
-            {
-              id: "4",
-              single: { src: "/images/after444.png", alt: "Результат работы ортопеда" },
-              caption: ""
-            }
-          ]}
-          columns={{ base: 1, md: 2 }}
-          aspectRatio="4/3"
-          rounded="2xl"
-          gap="6"
-          showCaption={true}
-        />
+       
 
 
 

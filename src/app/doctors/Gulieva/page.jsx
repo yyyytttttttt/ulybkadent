@@ -43,7 +43,7 @@ const page = () => {
     <Layout >
       <section className="">
         <F
-        imageSrc="/images/un.png"
+        imageSrc="/images/un1.png"
         Text1="Гулиева Анастасия Владиславовна" 
         Text2="Врач - ортодонт"
         Text3="КЛИНИКА - УЛ. ЗВЁЗДНАЯ 10"

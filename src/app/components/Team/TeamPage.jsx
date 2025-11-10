@@ -136,14 +136,14 @@ const doctorsData = [
    },
    {
      name: "Guliev",
-     image: "/images/Guliev.png",
+     image: "/images/Guliev1.png",
      link: "/doctors/Guliev",
      location: "КЛИНИКА - УЛ. ЗАРЕЧНАЯ 9",
      specialization: "Cтоматолог - хирург"
    },
    {
      name: "Goov",
-     image: "/images/Goov.png",
+     image: "/images/Goov1.png",
      link: "/doctors/Goov",
      location: "КЛИНИКА - УЛ. ЗАРЕЧНАЯ 9",
      specialization: "Cтоматолог - хирург"
@@ -151,7 +151,7 @@ const doctorsData = [
    
    {
      name: "Gulieva",
-     image: "/images/Gulieva.png",
+     image: "/images/Gulieva1.png",
      link: "/doctors/Gulieva",
      location: "КЛИНИКА - УЛ. ЗВЁЗДНАЯ 10",
      specialization: "Cтоматолог - хирург"
