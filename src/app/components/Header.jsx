@@ -63,9 +63,9 @@ const Header = ({onButtonClick}) => {
           <div className='w-[38%] xs:w-[25%]'>
             <img className='w-full h-auto' src="/images/newLogo.svg" alt="" />
           </div>
-          <Link href='/News' className='w-[8%] xs:w-[5%]'>
+          <div  className='w-[8%] xs:w-[5%]'>
             <img className='w-full h-auto' src="/images/zui.png" alt="" />
-          </Link>
+          </div>
         </div>
         <div>
           {isMenuOpen && <Menu />}
